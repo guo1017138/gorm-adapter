@@ -509,6 +509,9 @@ func (a *Adapter) SavePolicy(model model.Model) error {
 			}
 		}
 	}
+	if len(lines) == 0 {
+		return nil
+	}
 	if err := a.db.Create(&lines).Error; err != nil {
 		return err
 	}
