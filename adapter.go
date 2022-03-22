@@ -537,6 +537,9 @@ func (a *Adapter) AddPolicies(sec string, ptype string, rules [][]string) error 
 		line := a.savePolicyLine(ptype, rule)
 		lines = append(lines, line)
 	}
+	if len(lines) == 0 {
+		return nil
+	}
 	return a.db.Create(&lines).Error
 }
 
